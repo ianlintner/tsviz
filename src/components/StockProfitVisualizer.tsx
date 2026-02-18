@@ -4,7 +4,7 @@ import { VisualizerProps } from '../core/types';
 export function StockProfitVisualizer({ steps, currentStep }: VisualizerProps<StockProfitState>) {
   const state = steps[currentStep]?.state;
 
-  if (!state) return null;
+  if (!state || !state.prices) return null;
 
   const { prices, buyDay, sellDay, maxProfit, currentDay } = state;
   const maxPrice = Math.max(...prices);
