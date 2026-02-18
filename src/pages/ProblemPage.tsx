@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { registry } from '../core/registry';
+import { VisualizerProps } from '../core/types';
 import { usePlaybackStore } from '../store/playback';
 import { PlaybackControls } from '../components/PlaybackControls';
 import { StepDescription } from '../components/StepDescription';
@@ -10,12 +11,12 @@ import { HouseRobberVisualizer } from '../components/HouseRobberVisualizer';
 import { ClimbStairsVisualizer } from '../components/ClimbStairsVisualizer';
 import { StockProfitVisualizer } from '../components/StockProfitVisualizer';
 
-const visualizerMap: Record<string, React.ComponentType<{ steps: unknown[]; currentStep: number }>> = {
-  'knapsack': KnapsackVisualizer,
-  'coin-change': CoinChangeVisualizer,
-  'house-robber': HouseRobberVisualizer,
-  'climb-stairs': ClimbStairsVisualizer,
-  'stock-profit': StockProfitVisualizer,
+const visualizerMap: Record<string, React.ComponentType<VisualizerProps>> = {
+  'knapsack': KnapsackVisualizer as React.ComponentType<VisualizerProps>,
+  'coin-change': CoinChangeVisualizer as React.ComponentType<VisualizerProps>,
+  'house-robber': HouseRobberVisualizer as React.ComponentType<VisualizerProps>,
+  'climb-stairs': ClimbStairsVisualizer as React.ComponentType<VisualizerProps>,
+  'stock-profit': StockProfitVisualizer as React.ComponentType<VisualizerProps>,
 };
 
 export function ProblemPage() {
